@@ -80,6 +80,17 @@ class _HomeState extends State<HomePage> {
 class Greeting extends StatelessWidget {
     const Greeting({super.key});
 
+    String _getGreeting() {
+    final hour = DateTime.now().hour;
+    if (hour < 12) {
+      return 'Good Morning 👋';
+    } else if (hour < 17) {
+      return 'Good Afternoon 👋';
+    } else {
+      return 'Good Evening 👋';
+    }
+  }
+
     @override
     Widget build(BuildContext context) {
         return Row(
@@ -89,7 +100,7 @@ class Greeting extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                     Text(
-                    'Good Morning 👋',
+                    _getGreeting(),
                     style: Theme.of(context).textTheme.bodyLarge,
                     ),
                     const SizedBox(height: 4),
