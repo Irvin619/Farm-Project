@@ -1,10 +1,12 @@
+//import 'package:flutter/foundation.dart';
+
 class ProductsModel {
   final int id;
   final String name;
   final double price;
   final String image;
   final String description;
-  final int categoryId;
+  final String categoryName;
   final int availability;
 
   ProductsModel({
@@ -13,20 +15,38 @@ class ProductsModel {
     required this.price,
     required this.image,
     required this.description,
-    required this.categoryId,
+    required this.categoryName,
     required this.availability,
   });
 
   factory ProductsModel.fromJson(Map<String, dynamic> json) {
     return ProductsModel(
-      id: json["id"],
-      name: json["name"],
-      price: json["price"],
-      image: json["image"],
-      description: json["description"],
-      categoryId: json["category_id"],
-      availability: json["availability"],
+      id: json["id"] ?? "",
+      name: json["name"] ?? "",
+      price: json["price"] ?? "",
+      image: json["image"] ?? "",
+      description: json["description"] ?? "",
+      categoryName: json["category"]["name"] ?? "",
+      availability: json["availability"] ?? "",
     );
   }
   
+}
+
+class CategoryModel {
+  final int id;
+  final String name;
+
+  CategoryModel({
+    required this. id,
+    required this. name,
+  });
+
+  factory CategoryModel.fromJson(Map<String, dynamic> json){
+    return CategoryModel(
+    id: json['id'],
+    name: json['name'],
+    );
+  }
+
 }
