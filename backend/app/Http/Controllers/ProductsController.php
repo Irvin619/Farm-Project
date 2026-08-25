@@ -13,7 +13,7 @@ class ProductsController extends Controller
         $products = Products::all();
 
         foreach ($products as $product){
-            $product->image = asset('/api/image' . $product->image);
+            $product->image = asset('/api/image/' . $product->image);
             $product->category = Categories::where('id', $product->category_id)->first();
 
         }

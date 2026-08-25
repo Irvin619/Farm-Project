@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../pages/home.dart';
-import '../pages/orders.dart';
+import '../pages/products.dart';
 import '../pages/cart.dart';
 import '../pages/profile.dart';
-//import '../services/cart_service.dart';
+import '../services/cart_service.dart';
 
 class MainScreen extends StatefulWidget{
   const MainScreen({super.key});
@@ -17,7 +17,7 @@ class MainScreen extends StatefulWidget{
 class _MainScreenState extends State<MainScreen>{
   final pages = const [
     HomePage(),
-    OrdersPage(),
+    ProductsPage(),
     CartPage(),
     ProfilePage()
   ];

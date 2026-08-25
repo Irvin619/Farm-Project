@@ -6,5 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Orders extends Model
 {
-    //
+    public function product()
+    {
+    return $this->belongsTo(Products::class);
+    }
 }

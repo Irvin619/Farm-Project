@@ -22,6 +22,9 @@ void main() {
          ChangeNotifierProvider(
           create: (_) =>OrdersService(),
         ),
+        ChangeNotifierProvider(
+          create: (_) =>CartService(),
+        ),
       ],
       child: const MyApp()
     )
