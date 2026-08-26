@@ -21,17 +21,20 @@ class ProductsController extends Controller
 
     }
         
-
     //add product
     public function store(Request $request)
     {
+        $path = "";
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('products', 'public');
+        }
         try{
             $product = new Products();
             $product->name = $request->name;
             $product->category_id = $request->category_id;
             $product->price = $request->price;
-            $product->image = $request->image;
-            $product->availability = $request->availability;
+            $product->image = $path;
+            $product->availability = 1;
             $product->description = $request->description;
             $product->save();
             return response()->json([
@@ -46,22 +49,26 @@ class ProductsController extends Controller
         }    
 
     }
+
     // update product
     public function update(Request $request, $id)
     {
+        $path = "";
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('products', 'public');
+        }
         try{
             $product = Products::where('id', $id)->first();
             $product->name = $request->name;
             $product->category_id = $request->category_id;
             $product->price = $request->price;
-            $product->image = $request->image;
-            $product->availability = $request->availability;
+            $product->image = $path;
+            $product->availability = 1;
             $product->description = $request->description;
             $product->save();
             return response()->json([
                 'message' => 'Product updated successfully!',
-                
-                
+                               
             ], 201);
         }catch (\Exception $exception) {
             return response()->json([
@@ -71,6 +78,7 @@ class ProductsController extends Controller
         }    
 
     }
+    
     // delete product
     public function deleteProduct(Request $request, $id)
     {
