@@ -27,7 +27,11 @@ Route::get('/image/{path}', function ($path) {
 //private routes
 Route::middleware('auth:sanctum')->group(function () {
   Route::get('fetchAllOrders', [OrdersController::class, 'index']);
-  Route::get('fetchOrderPerUser/{id}', [OrdersController::class, 'getOrderPerUser']);
+  Route::get('fetchOrderPerUser/{id}', [OrdersController::class, 'getOrdersPerUser']);
   Route::post('saveNewOrder', [OrdersController::class, 'store']);
+
+  Route::post('addProduct', [ProductsController::class, 'store']);
+  Route::post('updateProduct/{id}', [ProductsController::class, 'update']);
+  Route::post('deleteProduct/{id}', [ProductsController::class, 'deleteProduct']);
 
 });

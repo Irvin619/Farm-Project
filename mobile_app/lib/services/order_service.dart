@@ -60,7 +60,7 @@ class OrdersModel{
   final int productId;
   final String productName;
   final int quantity;
-  final int orderStatus;  
+  final String orderStatus;  
   final double price;
   final String image;
   final DateTime createdAt;
@@ -72,7 +72,7 @@ class OrdersModel{
     required this.productName,
     required this.price,
     required this.image,
-    this.orderStatus = 1,
+    this.orderStatus = "",
     required this.createdAt,
 
   });
@@ -81,7 +81,7 @@ class OrdersModel{
     return OrdersModel(
       productId: json['product_id'] ?? "",
       quantity: json['quantity'] ?? "",
-      orderStatus: json['product_id'] ?? "",
+      orderStatus: json['order_status'] == 0 ? 'Fulfilled' : 'Processing',
       id: json["id"],
       productName: json["product"]["name"]?? "",
       price: (json["product"]["price"] as num).toDouble(),
